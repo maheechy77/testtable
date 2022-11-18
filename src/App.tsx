@@ -167,20 +167,26 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td className="border border-slate-700 px-6 py-4">{user.name}</td>
-              <td className="border border-slate-700 px-6 py-4">
-                {user.username}
-              </td>
-              <td className="border border-slate-700 px-6 py-4">
-                {user.phone}
-              </td>
-              <td className="border border-slate-700 px-6 py-4">
-                {user.website}
-              </td>
-            </tr>
-          ))}
+          {!!users.length ? (
+            users.map((user) => (
+              <tr key={user.id}>
+                <td className="border border-slate-700 px-6 py-4">
+                  {user.name}
+                </td>
+                <td className="border border-slate-700 px-6 py-4">
+                  {user.username}
+                </td>
+                <td className="border border-slate-700 px-6 py-4">
+                  {user.phone}
+                </td>
+                <td className="border border-slate-700 px-6 py-4">
+                  {user.website}
+                </td>
+              </tr>
+            ))
+          ) : (
+            <p className="text-2xl font-bold text-white p-4">No Data Found</p>
+          )}
         </tbody>
       </table>
     </div>
