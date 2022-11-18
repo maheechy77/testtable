@@ -52,53 +52,73 @@ function App() {
   };
 
   const setSortValue = (sortText: string, sortType: string): void => {
-    if (sortType !== asnDecText) {
-      setAsnDecText(sortType);
-      if (sortText !== "-----") {
-        let tempUsers = users.sort((a, b): any => {
-          if (sortText === "name") {
-            return asnDecText === "asn"
-              ? b.name.localeCompare(a.name)
-              : a.name.localeCompare(b.name);
-          } else if (sortText === "phone") {
-            return asnDecText === "asn"
-              ? b.phone.localeCompare(a.phone)
-              : a.phone.localeCompare(b.phone);
-          } else if (sortText === "username") {
-            return asnDecText === "asn"
-              ? b.username.localeCompare(a.username)
-              : a.username.localeCompare(b.username);
-          }
-        });
-        setUsers(tempUsers);
-      } else {
-        let tempUsers = users.sort((a, b) => {
-          return asnDecText === "asn" ? a.id - b.id : b.id - a.id;
-        });
-
-        setUsers(tempUsers);
-      }
-
-      setDropdownText(sortText);
-    } else {
-      console.log("2", sortType === asnDecText, asnDecText, sortType);
+    if (sortType === "-----") {
       let tempUsers = users.sort((a, b): any => {
         if (sortText === "name") {
-          return asnDecText === "asn"
-            ? b.name.localeCompare(a.name)
-            : a.name.localeCompare(b.name);
+          return a.name.localeCompare(b.name);
         } else if (sortText === "phone") {
-          return asnDecText === "asn"
-            ? b.phone.localeCompare(a.phone)
-            : a.phone.localeCompare(b.phone);
+          return a.phone.localeCompare(b.phone);
         } else if (sortText === "username") {
-          return asnDecText === "asn"
-            ? b.username.localeCompare(a.username)
-            : a.username.localeCompare(b.username);
+          return a.username.localeCompare(b.username);
         }
       });
+      setDropdownText(sortText);
+      setUsers(tempUsers);
+    } else if (sortText === "-----") {
+      let tempUsers = users.sort((a, b) => {
+        return sortType === "asn" ? a.id - b.id : b.id - a.id;
+      });
+      setAsnDecText(sortType);
       setUsers(tempUsers);
     }
+
+    // if (sortType !== asnDecText) {
+    //   setAsnDecText(sortType);
+    //   if (sortText !== "-----") {
+    //     let tempUsers = users.sort((a, b): any => {
+    //       if (sortText === "name") {
+    //         return asnDecText === "asn"
+    //           ? b.name.localeCompare(a.name)
+    //           : a.name.localeCompare(b.name);
+    //       } else if (sortText === "phone") {
+    //         return asnDecText === "asn"
+    //           ? b.phone.localeCompare(a.phone)
+    //           : a.phone.localeCompare(b.phone);
+    //       } else if (sortText === "username") {
+    //         return asnDecText === "asn"
+    //           ? b.username.localeCompare(a.username)
+    //           : a.username.localeCompare(b.username);
+    //       }
+    //     });
+    //     setUsers(tempUsers);
+    //   } else {
+    //     let tempUsers = users.sort((a, b) => {
+    //       return asnDecText === "asn" ? a.id - b.id : b.id - a.id;
+    //     });
+
+    //     setUsers(tempUsers);
+    //   }
+
+    //   setDropdownText(sortText);
+    // } else {
+    //   console.log("2", sortType === asnDecText, asnDecText, sortType);
+    //   let tempUsers = users.sort((a, b): any => {
+    //     if (sortText === "name") {
+    //       return asnDecText === "asn"
+    //         ? b.name.localeCompare(a.name)
+    //         : a.name.localeCompare(b.name);
+    //     } else if (sortText === "phone") {
+    //       return asnDecText === "asn"
+    //         ? b.phone.localeCompare(a.phone)
+    //         : a.phone.localeCompare(b.phone);
+    //     } else if (sortText === "username") {
+    //       return asnDecText === "asn"
+    //         ? b.username.localeCompare(a.username)
+    //         : a.username.localeCompare(b.username);
+    //     }
+    //   });
+    //   setUsers(tempUsers);
+    // }
   };
 
   return (
