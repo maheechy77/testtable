@@ -70,55 +70,26 @@ function App() {
       });
       setAsnDecText(sortType);
       setUsers(tempUsers);
+    } else if (sortType !== "-----" && sortText !== "-----") {
+      setDropdownText(sortText);
+      setAsnDecText(sortType);
+      let tempUsers = users.sort((a, b): any => {
+        if (sortText === "name") {
+          return sortType === "des"
+            ? b.name.localeCompare(a.name)
+            : a.name.localeCompare(b.name);
+        } else if (sortText === "phone") {
+          return sortType === "des"
+            ? b.phone.localeCompare(a.phone)
+            : a.phone.localeCompare(b.phone);
+        } else if (sortText === "username") {
+          return sortType === "des"
+            ? b.username.localeCompare(a.username)
+            : a.username.localeCompare(b.username);
+        }
+      });
+      setUsers(tempUsers);
     }
-
-    // if (sortType !== asnDecText) {
-    //   setAsnDecText(sortType);
-    //   if (sortText !== "-----") {
-    //     let tempUsers = users.sort((a, b): any => {
-    //       if (sortText === "name") {
-    //         return asnDecText === "asn"
-    //           ? b.name.localeCompare(a.name)
-    //           : a.name.localeCompare(b.name);
-    //       } else if (sortText === "phone") {
-    //         return asnDecText === "asn"
-    //           ? b.phone.localeCompare(a.phone)
-    //           : a.phone.localeCompare(b.phone);
-    //       } else if (sortText === "username") {
-    //         return asnDecText === "asn"
-    //           ? b.username.localeCompare(a.username)
-    //           : a.username.localeCompare(b.username);
-    //       }
-    //     });
-    //     setUsers(tempUsers);
-    //   } else {
-    //     let tempUsers = users.sort((a, b) => {
-    //       return asnDecText === "asn" ? a.id - b.id : b.id - a.id;
-    //     });
-
-    //     setUsers(tempUsers);
-    //   }
-
-    //   setDropdownText(sortText);
-    // } else {
-    //   console.log("2", sortType === asnDecText, asnDecText, sortType);
-    //   let tempUsers = users.sort((a, b): any => {
-    //     if (sortText === "name") {
-    //       return asnDecText === "asn"
-    //         ? b.name.localeCompare(a.name)
-    //         : a.name.localeCompare(b.name);
-    //     } else if (sortText === "phone") {
-    //       return asnDecText === "asn"
-    //         ? b.phone.localeCompare(a.phone)
-    //         : a.phone.localeCompare(b.phone);
-    //     } else if (sortText === "username") {
-    //       return asnDecText === "asn"
-    //         ? b.username.localeCompare(a.username)
-    //         : a.username.localeCompare(b.username);
-    //     }
-    //   });
-    //   setUsers(tempUsers);
-    // }
   };
 
   return (
